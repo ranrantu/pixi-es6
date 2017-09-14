@@ -1,12 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
     entry:'./src/js/index.js',
     output:{
-        path:path.resolve(__dirname,'./dist/js'),
-        publicPath: "dist",
+        path:path.resolve(__dirname,'./dist/'),
         filename:'bundle.js',
     },
     module:{
@@ -22,8 +22,9 @@ module.exports = {
         ],
     },
     plugins: [
+        new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            filename:'../index.html'
+            filename:'index.html'
         }),
         new webpack.HashedModuleIdsPlugin({
             hashFunction: 'sha256',
