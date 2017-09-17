@@ -4,10 +4,13 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-    entry:'./src/js/index.js',
+    entry:{
+        'app':'./src/js/index.js',
+        'vendor':'./src/js/pixi.min.js'
+    },
     output:{
         path:path.resolve(__dirname,'./dist/'),
-        filename:'bundle.js',
+        filename:'[name].[chunkHash].js',
     },
     module:{
         rules:[
@@ -16,7 +19,12 @@ module.exports = {
                 loader:'babel-loader',
                 exclude:/node_modules/,
                 options:{
-                    presets:['env']
+                    presets:[
+                        'env'
+                    ],
+                    plugins:[
+                        'babel-plugin-transform-class-properties'
+                    ]
                 }
             }
         ],
@@ -24,13 +32,14 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            filename:'index.html'
+            filename:'index.html',
+            template:'./src/entry.html'
         }),
-        new webpack.HashedModuleIdsPlugin({
-            hashFunction: 'sha256',
-            hashDigest: 'hex',
-            hashDigestLength: 20
-        })
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['vendor','manifest'],
+            minChunks: Infinity,
+        }),
+        new webpack.HashedModuleIdsPlugin()
     ],
     devServer: {
         contentBase: path.join(__dirname, "dist"),
