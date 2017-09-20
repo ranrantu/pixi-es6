@@ -20,7 +20,7 @@ module.exports = {
                 exclude:/node_modules/,
                 options:{
                     presets:[
-                        'env'
+                        ['env',{modules:false}]
                     ],
                     plugins:[
                         'babel-plugin-transform-class-properties'

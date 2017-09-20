@@ -4,8 +4,8 @@
   "description": "pixijs es6 module",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server"
+    "build": "webpack --config webpack.pro.config.js",
+    "dev": "webpack-dev-server --config webpack.dev.config.js --open"
   },
   "repository": {
     "type": "git",

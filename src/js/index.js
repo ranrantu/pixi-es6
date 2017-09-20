@@ -4,7 +4,8 @@ const container = document.createElement('div');
 document.body.appendChild(container);
 
 const commonFunction = () => {
-    return 'hello pixijs'+cf.sayHello();
+    console.log(PIXI);
+    return 'hello pixijs123'+cf.sayHello();
 }
 
 class B {
