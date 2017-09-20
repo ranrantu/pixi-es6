@@ -33,7 +33,7 @@ module.exports = {
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             filename:'index.html',
-            template:'./src/entry.html'
+            template:'./src/index.html'
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor','manifest'],
