@@ -1,3 +1,5 @@
+import ModelA from 'modelA';
+
 class GAME {
     constructor(...args){
         this.width = 640;
@@ -17,7 +19,11 @@ class GAME {
             view:document.querySelector('#'+GAME.canvasId)
         },true);
 
+        const modelA = new ModelA();
+
         this.stage = new PIXI.Container();
+        modelA.createModel();
+
         renderer.render(this.stage);
     }
 }

@@ -9,3 +9,5 @@ class ModelA extends Model {
 
     }
 }
+
+export default ModelA;

@@ -6,7 +6,7 @@ const webpack = require('webpack');
 module.exports = {
     entry:{
         'app':'./src/js/index.js',
-        'vendor':'./src/js/pixi.min.js'
+        'vendor':['./src/js/pixi.min.js','es6-tween']
     },
     output:{
         path:path.resolve(__dirname,'./dist/'),
