@@ -26,6 +26,16 @@ class GAME {
         modelA.createModel(this.stage);
 
         renderer.render(this.stage);
+
+        const animation = () => {
+            renderer.render(this.stage);
+
+            modelA.action();
+            console.log(11);
+
+            requestAnimationFrame(animation);
+        }
+        // requestAnimationFrame(animation);
     }
 
     start = () => {

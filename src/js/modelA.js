@@ -1,5 +1,5 @@
 import Model from '../common/model';
-import {Tween} from 'es6-tween';
+import {Tween} from 'es6-tween/src';
 import disc from '../assets/disc.png';
 
 class ModelA extends Model {
@@ -14,10 +14,16 @@ class ModelA extends Model {
         this.disc.position.x = 0;
         this.disc.position.y = 0;
 
-        const t = new Tween();
-        t.start();
-
+        // t.start();
         stage.addChild(this.disc);
+
+        const t = new Tween(this.disc.position,{x:0})
+            .to({x:100},1000).start();
+
+        console.log(t);
+    }
+
+    action = () => {
     }
 }
 
