@@ -1,4 +1,5 @@
-import ModelA from 'modelA';
+import ModelA from './modelA';
+import disc from '../assets/disc.png';
 
 class GAME {
     constructor(...args){
@@ -22,9 +23,16 @@ class GAME {
         const modelA = new ModelA();
 
         this.stage = new PIXI.Container();
-        modelA.createModel();
+        modelA.createModel(this.stage);
 
         renderer.render(this.stage);
+    }
+
+    start = () => {
+        const loader = PIXI.loader;
+        loader.add('disc',disc);
+        loader.once('complete',this.init);
+        loader.load();
     }
 }
 
