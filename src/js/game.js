@@ -1,4 +1,4 @@
-import ModelA from './modelA';
+import SceneA from './sceneA';
 import disc from '../assets/disc.png';
 
 class GAME {
@@ -20,22 +20,21 @@ class GAME {
             view:document.querySelector('#'+GAME.canvasId)
         },true);
 
-        const modelA = new ModelA();
+        const sceneA = new SceneA();
 
         this.stage = new PIXI.Container();
-        modelA.createModel(this.stage);
+        sceneA.createModel(this.stage);
 
         renderer.render(this.stage);
 
         const animation = () => {
             renderer.render(this.stage);
 
-            modelA.action();
-            console.log(11);
+            sceneA.action();
 
             requestAnimationFrame(animation);
         }
-        // requestAnimationFrame(animation);
+        requestAnimationFrame(animation);
     }
 
     start = () => {

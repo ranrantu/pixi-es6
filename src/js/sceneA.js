@@ -1,8 +1,8 @@
 import Model from '../common/model';
-import {Tween} from 'es6-tween/src';
+import { TweenMax,Bounce,Elastic } from 'gsap';
 import disc from '../assets/disc.png';
 
-class ModelA extends Model {
+class SceneA extends Model {
     constructor(...args){
         super(...args);
     }
@@ -16,15 +16,17 @@ class ModelA extends Model {
 
         // t.start();
         stage.addChild(this.disc);
-
-        const t = new Tween(this.disc.position,{x:0})
-            .to({x:100},1000).start();
-
-        console.log(t);
+        console.log(Bounce);
+        TweenMax.to(this.disc.position,1,
+            {
+                x:100,
+                y:100,
+                ease:Sine.SineInOut
+            })
     }
 
     action = () => {
     }
 }
 
-export default ModelA;
+export default SceneA;
